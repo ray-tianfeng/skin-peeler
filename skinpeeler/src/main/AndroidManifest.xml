@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zlong.skinpeeler">
+    <application>
+        <provider
+            android:name="com.zlong.skinpeeler.InitProvider"
+            android:exported="false"
+            android:multiprocess="true"
+            android:authorities="${applicationId}.skin-init-provider" />
+    </application>
+</manifest>

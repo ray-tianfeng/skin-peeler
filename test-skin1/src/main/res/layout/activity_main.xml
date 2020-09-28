@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/title_background"
+        android:gravity="center"
+        android:text="换肤"
+        android:textColor="@color/title_text_color"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@color/title_background"
+                    android:text="白色皮肤"
+                    android:textColor="@color/title_text_color" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/title_background"
+                    android:text="黑色皮肤"
+                    android:textColor="@color/title_text_color" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="属性（background）："
+                android:textColor="@color/title_text_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="使用color："
+                    android:textColor="@color/title_text_color"
+                    android:textSize="12sp" />
+
+                <View
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@color/title_text_color" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="使用shape："
+                    android:textColor="@color/title_text_color"
+                    android:textSize="12sp" />
+
+                <View
+
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/draw_test" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="使用图片："
+                    android:textColor="@color/title_text_color"
+                    android:textSize="12sp" />
+
+                <View
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/picture1" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="属性（src）："
+                android:textColor="@color/title_text_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="使用color："
+                    android:textColor="@color/title_text_color"
+                    android:textSize="12sp" />
+
+                <View
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@color/title_text_color" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="使用shape："
+                    android:textColor="@color/title_text_color"
+                    android:textSize="12sp" />
+
+                <View
+
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/draw_test" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="使用图片："
+                    android:textColor="@color/title_text_color"
+                    android:textSize="12sp" />
+
+                <View
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/picture1" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="属性（textColor）："
+                android:textColor="@color/title_text_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="使用color："
+                    android:textColor="@color/title_text_color"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="测试文字"
+                    android:textColor="@color/title_text_color" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="使用selector："
+                    android:textColor="@color/title_text_color"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:color/transparent"
+                    android:text="测试文字"
+                    android:textColor="@color/test_color" />
+            </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="属性（drawableLeft/Top/right/bottom）："
+            android:textColor="@color/title_text_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="drawableLeft："
+                android:textColor="@color/title_text_color"
+                android:textSize="12sp" />
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:drawableLeft="@drawable/left"/>
+        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="drawableTop："
+                    android:textColor="@color/title_text_color"
+                    android:textSize="12sp" />
+                <Button
+                    android:layout_width="200dp"
+                    android:layout_height="80dp"
+                    android:drawableTop="@drawable/top"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="layout_marginRight："
+                    android:textColor="@color/title_text_color"
+                    android:textSize="12sp" />
+                <Button
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:drawableRight="@drawable/right"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="drawableBottom："
+                    android:textColor="@color/title_text_color"
+                    android:textSize="12sp" />
+                <Button
+                    android:layout_width="200dp"
+                    android:layout_height="80dp"
+                    android:drawableBottom="@drawable/buttom"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

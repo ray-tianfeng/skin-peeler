@@ -1,0 +1,4 @@
+include ':test-skin1'
+include ':skinpeeler'
+include ':demo'
+rootProject.name = "skin-peeler"
