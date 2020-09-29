@@ -22,7 +22,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation project(":skinpeeler")
+    implementation 'com.github.ray-tianfeng:skin-peeler:v1.0.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.readystatesoftware.systembartint:systembartint:1.0.3'
 }

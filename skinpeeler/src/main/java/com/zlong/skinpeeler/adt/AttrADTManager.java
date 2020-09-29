@@ -16,35 +16,35 @@ import java.util.Map;
  * Time: 2020/9/24 0024
  * Author: zoulong
  */
-public class ParserManager {
-    private static ParserManager mParserManager = null;
-    private ArrayList<BaseAttrADT> attrParsers = new ArrayList<>();
-    public ParserManager(){
-        attrParsers.add(new AutoAttrADT());
+public class AttrADTManager {
+    private static AttrADTManager mParserManager = null;
+    private ArrayList<BaseAttrADT> attrADTs = new ArrayList<>();
+    public AttrADTManager(){
+        attrADTs.add(new AutoAttrADT());
     };
 
-    public static ParserManager getInstance(){
+    public static AttrADTManager getInstance(){
             if(mParserManager == null){
-                mParserManager = new ParserManager();
+                mParserManager = new AttrADTManager();
             }
         return mParserManager;
     }
 
     /**
      * 添加属性适配器
-     * @param attrParser 属性适配器
+     * @param attrADT 属性适配器
      * @param <P> 实现了{@link BaseAttrADT}的类
      */
-    public <P extends BaseAttrADT> void addParser(P attrParser){
-        if(attrParser == null){
+    public <P extends BaseAttrADT> void addAttrADT(P attrADT){
+        if(attrADT == null){
             LogUtils.e("attrParser is'nt null");
             return;
         }
-        attrParsers.add(attrParser);
+        attrADTs.add(attrADT);
     }
 
     public boolean isAdtAttr(String name){
-        for(BaseAttrADT attrParser : attrParsers){
+        for(BaseAttrADT attrParser : attrADTs){
             if(attrParser.getAttrName().contains(name)) return true;
         }
         return false;
@@ -54,7 +54,7 @@ public class ParserManager {
         Map<String, String> attrNV = skinView.getAttrNV();
         for(String attrName : attrNV.keySet()){
             String attrValue = attrNV.get(attrName);
-            for(BaseAttrADT attrParser : attrParsers){
+            for(BaseAttrADT attrParser : attrADTs){
                 try {
                     attrParser.applySkin(skinView.getTargetView(), mResource, skinPackageName, attrName, attrValue);
                 } catch (Exception e) {
@@ -68,7 +68,7 @@ public class ParserManager {
         Map<String, String> attrNV = skinView.getAttrNV();
         for(String attrName : attrNV.keySet()){
             String attrValue = attrNV.get(attrName);
-            for(BaseAttrADT attrParser : attrParsers){
+            for(BaseAttrADT attrParser : attrADTs){
                 attrParser.restore(skinView.getTargetView(), mResource, attrName, attrValue);
             }
         }

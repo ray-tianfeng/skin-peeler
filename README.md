@@ -175,4 +175,83 @@ public interface Factory2 extends Factory {
 可以看到参数里面有AttributeSet，我们可以通过AttributeSet筛选需要做处理的属性，记录view和对应的属性，然后在换肤时替换属性对应的资源，就可以达到换肤的目的了，
 具体处理逻辑较为复杂，可以通过后面提供的源码查看
 
-### 实现库
+### SkinPeeler库
+[库代码传送门](https://github.com/ray-tianfeng/skin-peeler)
+
+SkinPeeler库是基于上面的原理完成的换皮库，使用方法：
+1. 导入库
+
+```Gradle
+//root build.gradle
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://www.jitpack.io' }
+    }
+}
+
+//app build.gradle
+dependencies {
+    implementation 'com.github.ray-tianfeng:skin-peeler:v1.0.0'
+}
+```
+
+2. 使用
+
+- **换肤 SkinPeeler.getInstance().skin(String skinPath);**  
+  传入制作好的皮肤包，即可完成换肤
+
+- **还原 SkinPeeler.getInstance().restore();**  
+  不使用皮肤
+- **换肤监听 SkinPeeler.getInstance().addSkinChangeListener(Activity
+  mActivity, SkinPeeler.OnSkinChangeListener mOnSkinChangeListener);**  
+  皮肤切换监听，完成换皮时回调
+- **自定义属性适配器**
+
+     1. 实现[BaseAttrADT.java](skinpeeler/src/main/java/com/zlong/skinpeeler/adt/BaseAttrADT.java)
+     ```java
+    //支持的属性集合,例如：background、src、textColor
+    public List<String> getAttrName();   
+     /**
+     * 应用皮肤
+     * @param targetView 目标视图
+     * @param skinResources 皮肤Resources
+     * @param skinPackageName 皮肤包包名
+     * @param attrName 属性名称
+     * @param oldValueName 旧值方便通过{@link com.zlong.skinpeeler.utils.IdUtils} 查找皮肤包资源属性和名称
+     */
+    public void applySkin(View targetView, Resources skinResources, String skinPackageName, String attrName, String oldValueName) throws Exception;
+    
+    /**
+     * 恢复原始皮肤
+     * @param targetView 目标视图
+     * @param resources 原始 Resources
+     * @param attrName 属性名称
+     * @param oldValueName 旧值
+     */
+    public void restore(View targetView, Resources resources, String attrName, String oldValueName);
+   ```
+
+  2. 添加属适配器至管理器**SkinPeeler.getInstance().addAttrADT(BaseAttrADT
+     attrADT)**
+  3. 常用工具类  
+     **IdUtils**：资源Id查找工具类，通过`IdUtils.findResById(int
+     id)`,查找原包中id对应的类型、名称
+- **自定义属性注意事项**
+
+  1. ID  
+     原包中R.xx.xx对应的资源id不可在皮肤包中使用，必须使用皮肤包中对应资源的id，因为原包中的资源对应的id，和皮肤包中同一资源对应的id不同
+  2. 资源查找  
+     applySkin提供了皮肤包的Resources，那我们可以通过皮肤包资源id获取对应的资源，
+     我们把原包中的资源id通过`IdUtils.findResById`查找资源对应的名称和类型，然后通过`Resources.getIdentifier(String
+     name, String defType, String
+     defPackage)`查找资源在皮肤包中对应的id，最后获取资源就行了
+
+通过第二步我们可以得到资源的id，但是我们不能直接把皮肤包的资源id直接设置到view上，因为原皮肤对应的Resources，肯定没有皮肤包对应的资源id。  
+在代码中也不能直接设置资源id，因为换肤后，直接设置资源id，系统直接通过原始Resources查找的资源。需要通过上面的资源查找，直接查找对应的资源，设置到对应的view上  
+库内置了[AutoAttrADT.java](skinpeeler/src/main/java/com/zlong/skinpeeler/adt/AutoAttrADT.java)可以对照着来实现自定义属性
+- **实现属性**  
+  库已经通过[AutoAttrADT.java](skinpeeler/src/main/java/com/zlong/skinpeeler/adt/AutoAttrADT.java)实现了常用属性的适配  
+  background、src、textColor、drawableLeft、drawableTop、drawableRight、drawableBottom
+
+

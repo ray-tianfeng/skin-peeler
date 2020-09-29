@@ -3,6 +3,8 @@ package com.zlong.skinpeeler;
 import android.app.Activity;
 import android.content.res.Resources;
 
+import com.zlong.skinpeeler.adt.BaseAttrADT;
+
 /**
  * 对外接口
  * Time: 2020/9/25 0025
@@ -38,4 +40,11 @@ public interface ISkin {
      * @return 皮肤包包名
      */
     public String getSkinPackageName();
+
+    /**
+     * 添加属性适配至管理器
+     * @param attrADT 自定义的属性适配器
+     * @param <P>
+     */
+    public <P extends BaseAttrADT> void addAttrADT(P attrADT);
 }

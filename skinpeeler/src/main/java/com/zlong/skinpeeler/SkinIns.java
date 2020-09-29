@@ -17,7 +17,7 @@ import androidx.annotation.Nullable;
 
 import com.zlong.skinpeeler.adapter.ActivityLifecycleCallbackAdapter;
 import com.zlong.skinpeeler.adt.BaseAttrADT;
-import com.zlong.skinpeeler.adt.ParserManager;
+import com.zlong.skinpeeler.adt.AttrADTManager;
 import com.zlong.skinpeeler.utils.IdUtils;
 import com.zlong.skinpeeler.utils.LayoutInflaterHelper;
 import com.zlong.skinpeeler.utils.LogUtils;
@@ -128,7 +128,7 @@ class SkinIns implements ISkin{
      */
     protected void skinView(SkinView skinView){
         if(isApply()) return;
-        ParserManager.getInstance().skin(mResource, skinView, skinPackageName);
+        AttrADTManager.getInstance().skin(mResource, skinView, skinPackageName);
     }
 
     /**
@@ -169,7 +169,7 @@ class SkinIns implements ISkin{
         for(PageEntity pageEntity : pageEntityMap.values()){
             for(SkinView skinView : pageEntity.skinViews){
                 if(isApply()) return;
-                ParserManager.getInstance().skin(mResource, skinView, skinPackageName);
+                AttrADTManager.getInstance().skin(mResource, skinView, skinPackageName);
             }
         }
         skinChanged();
@@ -180,7 +180,7 @@ class SkinIns implements ISkin{
         mResource = mApplication.getResources();
         for(PageEntity pageEntity : pageEntityMap.values()){
             for(SkinView skinView : pageEntity.skinViews){
-                ParserManager.getInstance().restore(mApplication.getResources(), skinView, skinPackageName);
+                AttrADTManager.getInstance().restore(mApplication.getResources(), skinView, skinPackageName);
             }
         }
         skinChanged();
@@ -206,6 +206,11 @@ class SkinIns implements ISkin{
     public String getSkinPackageName() {
         if(isApply()) return mApplication.getPackageName();
         return skinPackageName;
+    }
+
+    @Override
+    public <P extends BaseAttrADT> void addAttrADT(P attrADT) {
+        AttrADTManager.getInstance().addAttrADT(attrADT);
     }
 
     public boolean isApply(){
