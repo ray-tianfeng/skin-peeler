@@ -209,7 +209,7 @@ dependencies {
   皮肤切换监听，完成换皮时回调
 - **自定义属性适配器**
 
-     1. 实现[BaseAttrADT.java](skinpeeler/src/main/java/com/zlong/skinpeeler/adt/BaseAttrADT.java)
+  1.    实现[BaseAttrADT.java](https://github.com/ray-tianfeng/skin-peeler/blob/master/skinpeeler/src/main/java/com/zlong/skinpeeler/adt/BaseAttrADT.java)
      ```java
     //支持的属性集合,例如：background、src、textColor
     public List<String> getAttrName();   
@@ -250,9 +250,9 @@ dependencies {
 
 通过第二步我们可以得到资源的id，但是我们不能直接把皮肤包的资源id直接设置到view上，因为原皮肤对应的Resources，肯定没有皮肤包对应的资源id。  
 在代码中也不能直接设置资源id，因为换肤后，直接设置资源id，系统直接通过原始Resources查找的资源。需要通过上面的资源查找，直接查找对应的资源，设置到对应的view上  
-库内置了[AutoAttrADT.java](skinpeeler/src/main/java/com/zlong/skinpeeler/adt/AutoAttrADT.java)可以对照着来实现自定义属性
+库内置了[AutoAttrADT.java](https://github.com/ray-tianfeng/skin-peeler/blob/master/skinpeeler/src/main/java/com/zlong/skinpeeler/adt/AutoAttrADT.java)可以对照着来实现自定义属性
 - **实现属性**  
-  库已经通过[AutoAttrADT.java](skinpeeler/src/main/java/com/zlong/skinpeeler/adt/AutoAttrADT.java)实现了常用属性的适配  
+  库已经通过[AutoAttrADT.java](https://github.com/ray-tianfeng/skin-peeler/blob/master/skinpeeler/src/main/java/com/zlong/skinpeeler/adt/AutoAttrADT.java)实现了常用属性的适配  
   background、src、textColor、drawableLeft、drawableTop、drawableRight、drawableBottom
 
 - **皮肤包制作**
@@ -264,7 +264,7 @@ dependencies {
   4.  替换换肤时需要修改的资源
   5.  通过build->build bundles->build apk将皮肤包打包
   6.  在对应module的build/outputs/debug
-      下有一个打包好的皮肤包apk，可以将后缀修改skin，或者直接使用都。修改后缀为了防止用户安装和删除。
+      下有一个打包好的皮肤包apk，可以将后缀修改skin，或者直接使用。修改后缀为了防止用户安装和删除。
 
 - **库使用注意事项**
   - 需要文件读取权限，如果在6.0及以上，需要做权限处理
