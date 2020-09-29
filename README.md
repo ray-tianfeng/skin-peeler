@@ -2,7 +2,7 @@
 现在的很多应用都有换肤的功能，例如QQ。这类应用都是在线下载皮肤包，然后在不重启的情况下直接完成换肤
 
 ### 示例
- <img src="demonstrate.gif" width = "600" height = "1150"/>
+ <img src="demonstrate.gif" width = "400" height = "750"/>
 
 ### 原理
 1. Activity setContentView内部调用
