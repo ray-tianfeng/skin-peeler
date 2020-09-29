@@ -172,7 +172,7 @@ public interface Factory2 extends Factory {
         public View onCreateView(View parent, String name, Context context, AttributeSet attrs);
     }
 ```
-可以看到参数里面有AttributeSet，我们可以通过AttributeSet筛选需要做处理的属性，记录view和对应的属性，然后在换肤时处理掉就可以达到换肤的目的了，
+可以看到参数里面有AttributeSet，我们可以通过AttributeSet筛选需要做处理的属性，记录view和对应的属性，然后在换肤时替换属性对应的资源，就可以达到换肤的目的了，
 具体处理逻辑较为复杂，可以通过后面提供的源码查看
 
 ### 实现库
