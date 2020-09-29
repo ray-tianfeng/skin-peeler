@@ -233,8 +233,8 @@ dependencies {
     public void restore(View targetView, Resources resources, String attrName, String oldValueName);
    ```
 
-  2. 添加属适配器至管理器**SkinPeeler.getInstance().addAttrADT(BaseAttrADT
-     attrADT)**
+  2. 添加属适配器至管理器`SkinPeeler.getInstance().addAttrADT(BaseAttrADT
+     attrADT)`
   3. 常用工具类  
      **IdUtils**：资源Id查找工具类，通过`IdUtils.findResById(int
      id)`,查找原包中id对应的类型、名称
@@ -255,9 +255,22 @@ dependencies {
   库已经通过[AutoAttrADT.java](skinpeeler/src/main/java/com/zlong/skinpeeler/adt/AutoAttrADT.java)实现了常用属性的适配  
   background、src、textColor、drawableLeft、drawableTop、drawableRight、drawableBottom
 
+- **皮肤包制作**
+
+  1.  创建Module
+  2.  将apply plugin: 'com.android.library'修改为apply plugin:
+      'com.android.application'，因为这样可以生成对应的资源id
+  3.  将原项目中res目录下的所有资源复制到皮肤包中，layout可以在完成制作后删除
+  4.  替换换肤时需要修改的资源
+  5.  通过build->build bundles->build apk将皮肤包打包
+  6.  在对应module的build/outputs/debug
+      下有一个打包好的皮肤包apk，可以将后缀修改skin，或者直接使用都。修改后缀为了防止用户安装和删除。
+
 - **库使用注意事项**
   - 需要文件读取权限，如果在6.0及以上，需要做权限处理
   - 包名只能是androidManifest中的packageName，不能在gradle使用applicationId，因为IdUtils通过包名查找R类的。
+  - 所有的资源尽量先定义后使用(R.string.xx, R.color.xx, R.drawable.xx)
+  - 沉浸式菜单栏适配，先定义菜单栏颜色，然后在String中定义图标显示模式，设置监听。皮肤变化时，在回调中更改状态栏颜色及图标颜色
 
 ### 扩展1
 通过原理我们了解到我们是通过hook
