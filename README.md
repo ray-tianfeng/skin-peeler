@@ -254,4 +254,16 @@ dependencies {
   库已经通过[AutoAttrADT.java](skinpeeler/src/main/java/com/zlong/skinpeeler/adt/AutoAttrADT.java)实现了常用属性的适配  
   background、src、textColor、drawableLeft、drawableTop、drawableRight、drawableBottom
 
+- **库使用注意事项**
+  - 需要文件读取权限，如果在6.0及以上，需要做权限处理
+  - 包名只能是androidManifest中的packageName，不能在gradle使用applicationId，因为IdUtils通过包名查找R类的。
 
+### 扩展1
+通过原理我们了解到我们是通过hook
+LayoutInflater的Factory2，实现了Factory2的方法后，我们主要做的就是将view和需要处理的属性记录下来。
+实际上activity也有onCreateView，我们可以通过重写onCreateView的方式去实现hook的功能，这样能减少因为hook带来的风险。
+上面的库为什么没有重写呢，因为减少接入带来的变化。如果自己去实现换肤的功能，可以直接使用activity的onCreateView做一个基类
+
+### 扩展2
+在上面的实现过程中有使用到AttributeSet，这个就是当前view的属性集合，我们是不是可以自定义一个属性（圆角背景）。然后在onCreateView解析到此属性时，
+通过java代码创建一个drawable，设置给view，注意此处自定义的属性只能在xml中使用，因为View不包含这个自定义的属性的。
