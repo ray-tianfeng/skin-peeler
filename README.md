@@ -273,11 +273,5 @@ dependencies {
   - 沉浸式菜单栏适配，先定义菜单栏颜色，然后在String中定义图标显示模式，设置监听。皮肤变化时，在回调中更改状态栏颜色及图标颜色
 
 ### 扩展1
-通过原理我们了解到我们是通过hook
-LayoutInflater的Factory2，实现了Factory2的方法后，我们主要做的就是将view和需要处理的属性记录下来。
-实际上activity也有onCreateView，我们可以通过重写onCreateView的方式去实现hook的功能，这样能减少因为hook带来的风险。
-上面的库为什么没有重写呢，因为减少接入带来的变化。如果自己去实现换肤的功能，可以直接使用activity的onCreateView做一个基类
-
-### 扩展2
 在上面的实现过程中有使用到AttributeSet，这个就是当前view的属性集合，我们是不是可以自定义一个属性（圆角背景）。然后在onCreateView解析到此属性时，
 通过java代码创建一个drawable，设置给view，注意此处自定义的属性只能在xml中使用，因为View不包含这个自定义的属性的。
